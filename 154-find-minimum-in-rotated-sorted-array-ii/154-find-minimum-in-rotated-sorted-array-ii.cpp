@@ -4,7 +4,7 @@ public:
         int start = 0, mid, n, end;
         n = nums.size() - 1;
         end = n;
-        while(end - start > 1){
+        while(start < end - 1){
             mid = start + (end - start) / 2;
             if(nums[start] == nums[end]){
                 end--;

@@ -21,6 +21,9 @@ public:
                 nums.erase(nums.begin() + i);
             }
         }
+        for(int i = 0; i < nums.size(); i++){
+            cout<<nums[i]<<" ";
+        }
         return count;
     }
 };

@@ -9,17 +9,16 @@ using namespace std;
 
 // } Driver Code Ends
 // User function template for C++
-#include<bits/stdc++.h>
+
 class Solution{
   public:
-    int MissingNumber(vector<int>& array, int n) {
-        // Your code goes here
-        int array_sum = 0;
-        for(int i = 0; i < array.size(); i++) {
-            array_sum += array[i];
+    int missingNumber(vector<int>& array, int n) {
+        long sum = (n * (n + 1)) / 2;
+        long sumArr = 0;
+        for(int i = 0; i < n - 1; i++) {
+            sumArr += array[i];
         }
-        int linear_sum = (n * (n + 1)) / 2;
-        return linear_sum - array_sum;
+        return (sum - sumArr);
     }
 };
 
@@ -35,7 +34,7 @@ int main() {
         vector<int> array(n - 1);
         for (int i = 0; i < n - 1; ++i) cin >> array[i];
         Solution obj;
-        cout << obj.MissingNumber(array, n) << "\n";
+        cout << obj.missingNumber(array, n) << "\n";
     }
     return 0;
 }

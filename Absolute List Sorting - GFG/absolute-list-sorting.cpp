@@ -46,23 +46,6 @@ struct Node
 class Solution{
     
 public:
-    // Node* insert(Node *node, Node *root) {
-    //     if(root == NULL) {
-    //         return node;
-    //     }
-    //     if(root->data >= node->data) {
-    //         node->next = root;
-    //         return node;
-    //     }
-    //     Node *prev = NULL, *curr = root;
-    //     while(curr != NULL && curr->data < node->data) {
-    //         prev = curr;
-    //         curr = curr->next;
-    //     }
-    //     prev->next = node;
-    //     node->next = curr;
-    //     return root;
-    // }
     Node* merge(Node *s1, Node *s2) {
         if(!s1) {
             return s2;
@@ -113,14 +96,6 @@ public:
         return slow;
     }
     Node* sortList(Node* head) {
-        // Node *root = NULL;
-        // while(head) {
-        //     Node *temp = head->next;
-        //     head->next = NULL;
-        //     root = insert(head, root);
-        //     head = temp;
-        // }
-        // return root;
         if(head->next != NULL) {
             Node *mid = getMid(head);
             Node *right = mid->next;

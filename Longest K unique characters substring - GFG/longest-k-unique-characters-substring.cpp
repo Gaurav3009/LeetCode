@@ -10,15 +10,17 @@ using namespace std;
 class Solution{
   public:
     int longestKSubstr(string s, int k) {
-        int n = s.length();
-        int i = 0, j = 0, maxLength = -1;
         map<char, int> hashMap;
+        int i, j;
+        i = j = 0;
+        int n = s.length();
+        int ans = -1;
         while(j < n) {
             hashMap[s[j]]++;
             if(hashMap.size() < k) {
                 j++;
             } else if(hashMap.size() == k) {
-                maxLength = max(maxLength, (j - i + 1));
+                ans = max(ans, (j - i + 1));
                 j++;
             } else {
                 while(hashMap.size() > k) {
@@ -31,7 +33,7 @@ class Solution{
                 j++;
             }
         }
-        return maxLength;
+        return ans;
     }
 };
 

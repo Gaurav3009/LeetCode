@@ -8,7 +8,7 @@ using namespace std;
 // #define ll long long
 class Solution{
 public:
-    int mod = 1000000007;
+    int mod = 1e9+7;
     ll dp[1002][1002];
     ll solve(int n,int k) {
         if(k < 1 || k > n) {

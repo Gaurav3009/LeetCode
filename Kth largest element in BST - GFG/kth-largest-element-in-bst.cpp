@@ -98,23 +98,31 @@ class Solution
 {
     public:
     stack<Node*> st;
-    void fullStack(Node *node) {
-        while(node != NULL) {
-            st.push(node);
-            node = node->right;
+    void fillStack(Node *curr) {
+        while(curr) {
+            st.push(curr);
+            curr = curr->right;
         }
     }
-    int kthLargest(Node *root, int K) {
-        fullStack(root);
-        Node *curr;
-        while(K--) {
-            curr = st.top();
+    Node* prev() {
+        Node *ans = NULL;
+        if(!st.empty()) {
+            ans = st.top();
             st.pop();
-            if(curr->left) {
-                fullStack(curr->left);
+            if(ans->left) {
+                fillStack(ans->left);
             }
         }
-        return curr->data;
+        return ans;
+    }
+    int kthLargest(Node *root, int K) {
+        fillStack(root);
+        Node *node = prev();
+        while(K > 1) {
+            node = prev();
+            K--;
+        }
+        return node->data;
     }
 };
 

@@ -4,24 +4,33 @@ using namespace std;
 
 
 // } Driver Code Ends
+
 class Solution{
     public:
     // Function to find equilibrium point in the array.
     // a: input array
     // n: size of array
     int equilibriumPoint(long long a[], int n) {
-        long long sum = 0;
-        for(int i = 0; i < n; i++) {
-            sum += a[i];
-        }
-        long long s = a[0];
+        long long arr[n];
+        arr[0] = a[0];
         for(int i = 1; i < n; i++) {
-            if(s == (sum - (a[i] + s))) {
-                return i + 1;
-            }
-            s += a[i];
+            arr[i] = arr[i - 1] + a[i];
         }
-        return -1;
+        int right_sum = arr[n - 1], left_sum = 0;
+        int f = 0, ind = -1;
+        for(int i = 0; i < n; i++) {
+            left_sum = arr[i] - a[i];
+            right_sum = arr[n - 1] - arr[i];
+            if(left_sum == right_sum) {
+                f = 1;
+                ind = i;
+                break;
+            }
+        }
+        if(f == 1) {
+            return ind + 1;
+        }
+        return ind;
     }
 
 };
